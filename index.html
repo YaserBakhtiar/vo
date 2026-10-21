@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حفظ لغات عربی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f8;--sf:#fff;--ink:#1b1620;--mute:#6d6676;--line:#e3e0e8;--ac:#8a1538;--ac2:#fbe9ef;--again:#c0392b;--hard:#b7791f;--good:#1f8a70;--easy:#2f6fd0;--sh:0 1px 2px rgba(30,20,40,.06),0 8px 24px rgba(30,20,40,.06);color-scheme:light}
+:root[data-theme=dark]{--bg:#120f17;--sf:#1c1823;--ink:#f1eef5;--mute:#9a93a6;--line:#2c2736;--ac:#e5617f;--ac2:#2b1820;--again:#e5675a;--hard:#e0a64a;--good:#42c3a0;--easy:#6a9df0;--sh:none;color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#120f17;--sf:#1c1823;--ink:#f1eef5;--mute:#9a93a6;--line:#2c2736;--ac:#e5617f;--ac2:#2b1820;--again:#e5675a;--hard:#e0a64a;--good:#42c3a0;--easy:#6a9df0;--sh:none;color-scheme:dark}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,system-ui,sans-serif;line-height:1.7;padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.wrap{max-width:640px;margin:0 auto;padding:16px 18px 40px;min-height:100%}
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 0 18px}
+.brand{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px}
+.brand i{width:30px;height:30px;border-radius:9px;background:var(--ac);color:#fff;display:grid;place-items:center;font:700 18px "Noto Naskh Arabic",serif;font-style:normal}
+.ib{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--sf);font-size:16px}
+.panel{background:var(--sf);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--sh);margin-bottom:14px}
+h2{font-size:15px;font-weight:600;color:var(--mute);margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.stats b{display:block;font-size:30px;font-weight:800;line-height:1.2}
+.stats span{font-size:13px;color:var(--mute)}
+.stats .n b{color:var(--easy)}.stats .d b{color:var(--ac)}.stats .l b{color:var(--good)}
+.bar{height:8px;border-radius:8px;background:var(--line);overflow:hidden;margin-top:16px}
+.bar>div{height:100%;background:var(--good);width:0;transition:width .3s}
+.cap{font-size:13px;color:var(--mute);margin-top:6px}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;background:var(--ac);color:#fff;font-weight:700;font-size:17px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.s{background:var(--sf);color:var(--ink);border:1px solid var(--line);font-size:14px;font-weight:600;padding:10px}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap}
+.row label{font-size:14px}
+select,input[type=number]{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:150px}
+input[type=number]{min-width:0;width:90px;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:13px;color:var(--mute);margin-top:10px}
+.empty{text-align:center;padding:26px 10px}
+.empty p{margin:6px 0 16px;color:var(--mute)}
+.sbar{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sbar .bar{flex:1;margin:0}
+.sbar span{font-size:13px;color:var(--mute);min-width:56px;text-align:left}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);padding:28px 20px 24px;min-height:300px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;position:relative}
+.ar{font:700 clamp(34px,9vw,52px)/1.9 "Noto Naskh Arabic","Traditional Arabic",serif;word-break:break-word}
+.fa{font-size:23px;font-weight:600;color:var(--ac);margin-top:6px}
+.syn{font-size:20px;color:var(--mute);margin-top:8px;font-family:"Noto Naskh Arabic",serif}
+.back{border-top:1px dashed var(--line);margin-top:16px;padding-top:14px}
+.tap{font-size:13px;color:var(--mute);margin-top:18px}
+.spk{position:absolute;top:12px;left:12px}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.rate button{border-radius:12px;padding:10px 4px;background:var(--sf);border:1px solid var(--line);border-bottom:3px solid var(--c);font-weight:600;font-size:15px}
+.rate small{display:block;font-size:12px;color:var(--mute);font-weight:400}
+.pop{animation:pop .22s ease-out}
+@keyframes pop{from{opacity:.4;transform:scale(.98)}to{opacity:1;transform:none}}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;z-index:9}
+.done{text-align:center;padding:40px 10px}.done h1{font-size:26px;margin-bottom:6px}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><i>ع</i> حفظ لغات</div>
+    <button class="ib" id="theme" title="تغییر تم" aria-label="تغییر تم">◐</button>
+  </div>
+  <div id="app"></div>
+</div>
+<input type="file" id="file" accept=".csv,.txt,.tsv,.json" hidden>
+<script>
+const $=s=>document.querySelector(s), app=$('#app');
+const fa=n=>Number(n).toLocaleString('fa-IR'), D=864e5;
+const S={get(k,d){try{const v=localStorage.getItem('sh.'+k);return v?JSON.parse(v):d}catch(e){return d}},
+ set(k,v){try{localStorage.setItem('sh.'+k,JSON.stringify(v))}catch(e){toast('ذخیره‌سازی در مرورگر ممکن نیست')}}};
+let cards=S.get('cards',[]), st=S.get('st',{}), cfg=Object.assign({nw:20,range:'all',theme:''},S.get('cfg',{})), daily=S.get('daily',{d:'',n:0});
+const tk=new Date().toDateString(); if(daily.d!==tk){daily={d:tk,n:0};S.set('daily',daily)}
+let Q=[],total=0,done=0,flipped=false;
+
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2600)}
+function theme(){const r=document.documentElement;cfg.theme?r.dataset.theme=cfg.theme:r.removeAttribute('data-theme')}
+$('#theme').onclick=()=>{const dark=matchMedia('(prefers-color-scheme:dark)').matches;const cur=cfg.theme||(dark?'dark':'light');cfg.theme=cur==='dark'?'light':'dark';S.set('cfg',cfg);theme()};
+theme();
+
+/* ---------- import ---------- */
+function parseTable(t,d){const R=[];let r=[],f='',q=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
+  else if(c=='"'&&!f)q=true; else if(c==d){r.push(f);f=''}
+  else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;r.push(f);f='';if(r.some(x=>x.trim()))R.push(r);r=[]}
+  else f+=c}
+ r.push(f);if(r.some(x=>x.trim()))R.push(r);return R}
+function plain(h){if(!/[<&]/.test(h))return h.trim();const x=new DOMParser().parseFromString(h,'text/html');return x.body.textContent.trim()}
+function fromText(t){
+ t=t.replace(/^\uFEFF/,'');
+ const lines=t.split(/\r?\n/);let tab=false;
+ const body=lines.filter(l=>{if(l.startsWith('#')){if(/separator:tab/i.test(l))tab=true;return false}return true}).join('\n');
+ const d=tab||(body.split('\n')[0]||'').includes('\t')?'\t':',';
+ let rows=parseTable(body,d);
+ if(rows.length&&/^(مفردة|front|word|arabic)$/i.test(rows[0][0].trim()))rows.shift();
+ const out=[];
+ for(const r of rows){if(!r[0]||!r[0].trim())continue;let w=plain(r[0]),s='',f='';
+  if(r.length>=3){s=plain(r[1]);f=plain(r[2])}
+  else{const m=(r[1]||'').match(/<div[^>]*>([\s\S]*?)<\/div>/g);
+   if(m&&m.length>1){f=plain(m[0]);s=plain(m[1])}else f=plain(r[1]||'')}
+  out.push({w,s,f})}
+ return out}
+$('#file').onchange=async e=>{const fl=e.target.files[0];e.target.value='';if(!fl)return;
+ const t=await fl.text();
+ if(fl.name.endsWith('.json')){try{const j=JSON.parse(t);cards=j.cards||[];st=j.st||{};cfg=Object.assign(cfg,j.cfg||{});daily=j.daily||daily;
+   S.set('cards',cards);S.set('st',st);S.set('cfg',cfg);S.set('daily',daily);toast('پشتیبان بازیابی شد');home()}catch(x){toast('فایل پشتیبان معتبر نیست')}return}
+ const c=fromText(t);
+ if(!c.length){toast('هیچ لغتی پیدا نشد. فایل باید ستون‌های مفردة، مرادف و معنی فارسی داشته باشد.');return}
+ const seen=new Set();cards=c.filter(x=>!seen.has(x.w)&&seen.add(x.w));
+ S.set('cards',cards);toast(fa(cards.length)+' لغت وارد شد');home()};
+const pick=()=>$('#file').click();
+
+/* ---------- scheduling ---------- */
+function sched(s,q){const now=Date.now();s=s?{...s}:{r:0,i:0,e:2.5,d:0,l:0};
+ if(s.r===0){if(q===0)s.d=now+6e4;else if(q===1)s.d=now+6e5;else{s.r=1;s.i=q===2?1:4;s.d=now+s.i*D}}
+ else if(q===0){s.l++;s.e=Math.max(1.3,s.e-.2);s.i=1;s.d=now+6e5}
+ else{if(q===1){s.i=Math.max(s.i+1,Math.round(s.i*1.2));s.e=Math.max(1.3,s.e-.15)}
+  else if(q===2)s.i=Math.max(s.i+1,Math.round(s.i*s.e));
+  else{s.i=Math.max(s.i+2,Math.round(s.i*s.e*1.3));s.e+=.15}
+  s.d=now+s.i*D}
+ return s}
+function lab(ms){const m=Math.round(ms/6e4);if(m<60)return fa(Math.max(1,m))+' دقیقه';const h=Math.round(m/60);if(h<24)return fa(h)+' ساعت';
+ const d=Math.round(ms/D);return d<30?fa(d)+' روز':d<365?fa(Math.round(d/30))+' ماه':fa((d/365).toFixed(1))+' سال'}
+function span(){if(cfg.range==='all')return[0,cards.length];const n=+cfg.range;return[n*100,Math.min(cards.length,n*100+100)]}
+function counts(){const[a,b]=span(),now=Date.now();let n=0,du=0,l=0;
+ for(let i=a;i<b;i++){const s=st[cards[i].w];if(!s)n++;else{if(s.d<=now)du++;if(s.r>0)l++}}
+ return{n,du,l,t:b-a}}
+function build(){const[a,b]=span(),now=Date.now(),du=[],nw=[];
+ for(let i=a;i<b;i++){const s=st[cards[i].w];if(!s)nw.push(i);else if(s.d<=now)du.push(i)}
+ du.sort((x,y)=>st[cards[x].w].d-st[cards[y].w].d);
+ Q=[...du,...nw.slice(0,Math.max(0,cfg.nw-daily.n))];total=Q.length;done=0}
+
+/* ---------- views ---------- */
+function home(){
+ if(!cards.length){app.innerHTML=`<div class="panel empty"><h2>هنوز لغتی اضافه نشده</h2><p>فایل CSV یا TXT لغات را وارد کن. ستون‌ها: مفردة، مرادف، معنی فارسی.</p><button class="btn" id="imp">وارد کردن فایل لغات</button></div>`;$('#imp').onclick=pick;return}
+ const c=counts(),lim=Math.max(0,cfg.nw-daily.n),todo=c.du+Math.min(c.n,lim);
+ let opts=`<option value="all">همه لغات (${fa(cards.length)})</option>`;
+ for(let i=0;i*100<cards.length;i++)opts+=`<option value="${i}">بخش ${fa(i+1)} (${fa(i*100+1)} تا ${fa(Math.min(cards.length,i*100+100))})</option>`;
+ app.innerHTML=`<div class="panel"><div class="stats"><div class="n"><b>${fa(c.n)}</b><span>جدید</span></div><div class="d"><b>${fa(c.du)}</b><span>آمادهٔ مرور</span></div><div class="l"><b>${fa(c.l)}</b><span>یادگرفته</span></div></div>
+ <div class="bar"><div style="width:${c.t?c.l/c.t*100:0}%"></div></div><div class="cap">${fa(c.l)} از ${fa(c.t)} لغت شروع شده</div></div>
+ <button class="btn" id="go" ${todo?'':'disabled'}>${todo?`شروع مرور (${fa(todo)} کارت)`:'برای امروز تمام شد'}</button>
+ <div class="panel" style="margin-top:14px"><h2>تنظیمات</h2>
+ <div class="row"><label for="rg">بخش مرور</label><select id="rg">${opts}</select></div>
+ <div class="row"><label for="nw">لغت جدید در روز</label><input type="number" id="nw" min="0" max="500" value="${cfg.nw}"></div>
+ <div class="grid"><button class="btn s" id="imp">وارد کردن لغات</button><button class="btn s" id="bk">دریافت پشتیبان پیشرفت</button></div>
+ <div class="grid" style="margin-top:10px"><button class="btn s" id="rs">صفر کردن پیشرفت</button><button class="btn s" id="rm">حذف همهٔ داده‌ها</button></div>
+ <p class="hint">پیشرفت فقط در همین مرورگر ذخیره می‌شود. برای انتقال به دستگاه دیگر، پشتیبان بگیر و با «وارد کردن لغات» فایل JSON را باز کن.</p></div>`;
+ $('#rg').value=cfg.range;$('#rg').onchange=e=>{cfg.range=e.target.value;S.set('cfg',cfg);home()};
+ $('#nw').onchange=e=>{cfg.nw=Math.max(0,+e.target.value||0);S.set('cfg',cfg);home()};
+ $('#go').onclick=()=>{build();Q.length?study():home()};$('#imp').onclick=pick;
+ $('#bk').onclick=()=>{const b=new Blob([JSON.stringify({cards,st,cfg,daily})],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='vocab-backup.json';a.click();URL.revokeObjectURL(a.href)};
+ $('#rs').onclick=()=>{if(confirm('همهٔ پیشرفت مرور پاک شود؟ لغات می‌مانند.')){st={};daily={d:tk,n:0};S.set('st',st);S.set('daily',daily);home()}};
+ $('#rm').onclick=()=>{if(confirm('لغات و پیشرفت هر دو پاک شوند؟')){cards=[];st={};S.set('cards',cards);S.set('st',st);home()}}}
+
+function study(){
+ if(!Q.length){finish();return}
+ const c=cards[Q[0]];flipped=false;
+ app.innerHTML=`<div class="sbar"><button class="ib" id="bk" aria-label="بازگشت">→</button><div class="bar"><div style="width:${total?done/total*100:0}%"></div></div><span>${fa(done)} / ${fa(total)}</span></div>
+ <div class="card pop" id="cd" tabindex="0" role="button" aria-label="نمایش پاسخ"><button class="ib spk" id="sp" aria-label="تلفظ">🔊</button><div class="ar" id="w"></div><div id="bc" hidden class="back"><div class="fa" id="f"></div><div class="syn" id="s"></div></div><div class="tap" id="tp">برای دیدن پاسخ بزن (Space)</div></div>
+ <div class="rate" id="rt" hidden></div>`;
+ $('#w').textContent=c.w;$('#f').textContent=c.f;$('#s').textContent=c.s;
+ $('#bk').onclick=()=>home();
+ $('#sp').onclick=e=>{e.stopPropagation();speak(c.w)};
+ $('#cd').onclick=flip}
+function flip(){if(flipped)return;flipped=true;const c=cards[Q[0]],s=st[c.w];
+ $('#bc').hidden=false;$('#tp').hidden=true;
+ const names=['دوباره','سخت','خوب','آسان'],cl=['--again','--hard','--good','--easy'],now=Date.now(),rt=$('#rt');rt.hidden=false;
+ names.forEach((n,q)=>{const b=document.createElement('button');b.style.setProperty('--c',`var(${cl[q]})`);b.innerHTML=`${n}<small></small>`;
+  b.querySelector('small').textContent=lab(sched(s,q).d-now);b.onclick=()=>rate(q);rt.append(b)})}
+function rate(q){const i=Q.shift(),w=cards[i].w,isNew=!st[w];
+ st[w]=sched(st[w],q);if(isNew){daily.n++;S.set('daily',daily)}
+ S.set('st',st);
+ if(q<2||st[w].d-Date.now()<12e5)Q.splice(Math.min(Q.length,q===0?3:6),0,i);else done++;
+ study()}
+function finish(){app.innerHTML=`<div class="done"><h1>مرور امروز تمام شد 🎉</h1><p class="cap">${fa(done)} کارت مرور شد.</p><br><button class="btn" id="hm">بازگشت</button><br><button class="btn s" id="mr">۲۰ لغت جدید دیگر</button></div>`;
+ $('#hm').onclick=home;$('#mr').onclick=()=>{daily.n=Math.max(0,daily.n-20);S.set('daily',daily);build();Q.length?study():home()}}
+function speak(t){try{const u=new SpeechSynthesisUtterance(t.split('(')[0]);u.lang='ar-SA';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+addEventListener('keydown',e=>{if(!$('#cd'))return;
+ if(e.code==='Space'||e.key==='Enter'){if(e.target.tagName==='BUTTON')return;e.preventDefault();flip()}
+ else if(flipped&&'1234'.includes(e.key))rate(+e.key-1)});
+home();
+</script>
+</body>
+</html>
